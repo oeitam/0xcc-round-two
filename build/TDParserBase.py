@@ -370,21 +370,8 @@ def add_delegation(target, principal, from_principal, delegation="R"):
     global global_variable_change_buffer
     global principal_change_buffer
 
-    print "MARKER 300:"
     debug_status_report("add delegation #1")
     if target is "all":
-        # step 1:
-        # go over the globals
-        # if they the meet the criteria
-        #   if they do not exist in the change buffer, add them to teh change buffer
-
-        # step 2
-        # fo over the change buffer
-        # check for the criteria
-        #   if yes change as necessary
-
-        # step 1
-        print "MARKER 310:"
         for v in global_variable_table.keys():
             if v not in global_variable_change_buffer.keys():
                 # check if it meets the criteria for a change
@@ -396,23 +383,16 @@ def add_delegation(target, principal, from_principal, delegation="R"):
                         global_variable_change_buffer[v] = global_variable_buffer[v]
 
         # step 2
-        print "MARKER 320:"
         for v in global_variable_change_buffer.keys():
             var = global_variable_change_buffer[v]
             perms = var["access_control"]
-            print "MARKER 325:"
             if CONTEXT in perms.keys():
                 if "D" in perms[CONTEXT]:
                     # add delegation for principal
                     perms[principal] = delegation
-                    print type(perms)
-                    print type(perms[principal])
-                    print perms[principal]
-                    print "MARKER 327:"
-                    # this is a new principal ... or so we assume NEED FIX
+
                     global_variable_change_buffer[v]["access_control"][principal] = delegation 
                     
-        print "MARKER 330:"
         return True
                     
                     
@@ -461,16 +441,11 @@ def add_delegation(target, principal, from_principal, delegation="R"):
         var = var_table[target]
         perms = var["access_control"]
         #perms[principal] = delegation # need to add, not replace
-        print "MARKER 332:"
-        print perms
-        print perms["admin"]
-        print principal
+
         if principal not in perms.keys(): #add it
             perms[principal] = delegation 
-        print "MARKER 333:"
         if delegation not in perms[principal]: # add it
             perms[principal] = perms[principal] + delegation
-        print "MARKER 334:"
         var = {"value":var["value"],"access_control":perms}
         if the_table == "g":
             debug_status_report("add delegation #4")
@@ -679,7 +654,7 @@ def validate_context(principal,password):
     global principal_change_buffer
     global principal_table
     
-    print principal_table
+    #print principal_table
     if "\"" in password:
         password = password.replace("\"","")
     if principal is "anyone":
@@ -952,7 +927,7 @@ def nud(self):
     
     exp = expression(send_me) # grabs the next sub-expression
 
-    print "Expression foreach: ", exp
+    #print "Expression foreach: ", exp
 
     # analyze 
     
@@ -975,9 +950,6 @@ def nud(self):
             if (need_replacement):
                 for k in exp.keys():
                     if "\"" not in exp[k]: # this is a variable name
-                        # here I assume it is the iterator, but actually, we need
-                        # to check if there is another option - a real variable!
-                        # NEED FIX
                         local_new[k] = r
 
             try:
@@ -1005,10 +977,6 @@ def nud(self):
                 flush_changes()
                 return
     else:
-        # NEED FIX
-        # need to check if when we come here, we need to handle the case where we
-        # just need to replace with a string constant like "string constant" which
-        # I am not sure is handled
         if DEBUG:
             print "No Sub-field Grabbing whole entries"
         advance()
@@ -1048,39 +1016,6 @@ def led(self, left):
         self.second = record
     return self
 
-##@method(symbol("{"))
-##def nud(self):
-##    print "MARKER 200"
-##    self.first = []
-##    if token.id != "}":
-##        while 1:
-##            if token.id == "}":
-##                break
-##            exp = expression()
-
-##            self.first.append(exp)
-##            try:
-##                advance(":")
-##            except:
-##                OUTPUT_ROWS.append("FAILED")
-##                flush_changes()
-##                return
-##            self.first.append(expression())
-##            if token.id != ",":
-##                break
-##            try:
-##                advance(",")
-##            except:
-##                OUTPUT_ROWS.append("FAILED")
-##                flush_changes()
-##                return
-##    try:        
-##        advance("}")
-##    except:
-##        OUTPUT_ROWS.append("FAILED")
-##        flush_changes()
-##        return
-##    return self
 
 @method(symbol("("))
 def led(self, left):
@@ -1302,61 +1237,6 @@ def nud(self):
     OUTPUT_ROWS.append("APPEND")
     return self
 
-##@method(symbol("append"))
-##def nud(self):
-##    if token.id == "to":
-##        advance()
-##        self.first = token.value
-##        advance()
-##        advance()
-##        self.second = expression()
-##        if not variable_exists(self.first):
-##            print "%s doesnt exist failing" % self.first
-##            OUTPUT_ROWS.append("FAILED")
-##            return
-##        curval = lookup_variable_value(self.first)
-##        curperms = lookup_variable_value(self.first)
-##        nextval = curval
-##        if type(curval) == type({}):
-##            if type(self.second) == type({}):
-##                for k in self.second:
-##                    v = self.second[k]
-##                    nextval[k] = v
-##            else:
-##                OUTPUT_ROWS.append("FAILED")
-##                flush_changes()
-##                return
-##        elif type(curval) == type([]):
-##            if type(self.second) == type([]):
-##                for i in range(0,len(self.second)):
-##                    nextval.append(self.second[i])
-##            elif type(self.second) == type({}):
-##                nextval.append(self.second)
-##            elif type(curval) == type(" "):
-##                nextval.append(self.second.value)
-##            else:
-##                if DEBUG:
-##                    print "append to couldnt determine what to do with ", type(curval)
-##                    OUTPUT_ROWS.append("FAILED")
-##                    flush_changes()
-##                    return
-##        else:
-##            if type(self.second) != type(' '):
-##                OUTPUT_ROWS.append("FAILED")
-##                flush_changes()
-##                return
-##            nextval = curval + self.second
-##        if self.first in local_variable_change_buffer.keys():
-##             var_table = "l"
-##        else:
-##            var_table = "g"
-##        if var_table == "l":
-##            add_local(self.first,nextval)
-##        else:
-##            add_global(self.first,nextval)
-##    OUTPUT_ROWS.append("APPEND")
-##    return self
-
 
 @method(symbol("change"))
 def nud(self):
@@ -1476,7 +1356,6 @@ def nud(self):
 
 @method(symbol("delete"))
 def nud(self):
-    print "MARKER 200:"
     debug_status_report("delete #1")
     
     if token.id == "delegation":
@@ -1582,7 +1461,6 @@ def led(self, left):
 
 @method(symbol("return"))
 def nud(self):
-    print "MARKER 100:"
     debug_status_report("return")
     print_token(self)
     
@@ -1644,84 +1522,6 @@ def nud(self):
                 print "Failed to lookup: ", exp.value
     return
 
-'''
-@method(symbol("+"))
-def led(self, left):
-    self.first = left
-    if hasattr(left, 'id'):
-        if left.id == "(name)":
-            left_val = lookup_variable_value(left.value)
-        else:
-            left_val = left.value
-    else:
-        left_val = left
-    self.second = expression(40)
-    try:
-        if self.second.id == "(literal)":
-            return float(left_val)+float(self.second.value)
-        elif self.second.id == "(name)":
-            right_val = lookup_variable_value(self.second.value)
-        return float(left_val)+float(right_val)
-    except Exception as e:
-        return float(left_val)+float(self.second)
-
-@method(symbol("*"))
-def led(self, left):
-    self.first = left
-    if hasattr(left, 'id'):
-        if left.id == "(name)":
-            left_val = lookup_variable_value(left.value)
-        else:
-            left_val = left.value
-    else:
-        left_val = left
-    self.second = expression(40)
-    try:
-        if self.second.id == "(literal)":
-            return float(left_val)*float(self.second.value)
-        elif self.second.id == "(name)":
-            right_val = lookup_variable_value(self.second.value)
-        return float(left_val)*float(right_val)
-    except Exception as e:
-        return float(left_val)*float(self.second)
-
-@method(symbol("/"))
-def led(self, left):
-    self.first = left
-    if hasattr(left, 'id'):
-        if left.id == "(name)":
-            left_val = lookup_variable_value(left.value)
-        else:
-            left_val = left.value
-    else:
-        left_val = left
-    self.second = expression(40)
-    try:
-        if self.second.id == "(literal)":
-            return float(left_val)/float(self.second.value)
-        elif self.second.id == "(name)":
-            right_val = lookup_variable_value(self.second.value)
-        return float(left_val)/float(right_val)
-    except Exception as e:
-        return float(left_val)/float(self.second)
-    
-@method(symbol("-"))
-def led(self, left):
-    self.first = left
-    if left.id == "(name)":
-        left_val = lookup_variable_value(left.value)
-    else:
-        left_val = left.value
-    self.second = expression(40)
-    try:
-        if self.second.id == "(literal)":
-            return float(left_val)-float(self.second.value)
-        elif self.second.id == "(name)":
-            right_val = lookup_variable_value(self.second.value)
-        return float(left_val)-float(right_val)
-    except Exception as e:
-        return float(left_val)-float(self.second)
-'''
 
 # displays
 
