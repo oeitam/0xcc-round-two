@@ -6,8 +6,8 @@
         "base64": false
     },
     "programs": [
-        {"program": "as principal admin password \"B0BPWxxd\" do\nset    = \"another string\"\nreturn x\n***\n", "base64": false},
-        {"program": "as principal admin password \"B0BPWxxd\" do\nset    = \"another string\"\nreturn x\n***\n", "base64": false},
-        {"program": "as principal admin password \"B0BPWxxd\" do\nset  x  = \nreturn x\n***\n", "base64": false}
+        {"program": "as principal admin password \"B0BPWxxd\" do\nset    = \"another string\"\nreturn x\n***", "base64": false},
+        {"program": "as principal admin password \"B0BPWxxd\" do\nset    = \"another string\"\nreturn x\n***", "base64": false},
+        {"program": "as principal admin password \"B0BPWxxd\" do\nset  x  = \nreturn x\n***", "base64": false}
     ]
 }
