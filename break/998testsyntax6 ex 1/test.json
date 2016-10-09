@@ -6,6 +6,6 @@
         "base64": false
     },
     "programs": [
-        {"program": "principal admin password \"B0BPWxxd\" do\nset x = \"another string\"\nreturn x\n***", "base64": false}
+        {"program": "as principal admin password \"B0BPWxxd\"\nset x = \"another string\"\nreturn x\n***", "base64": false}
     ]
 }
