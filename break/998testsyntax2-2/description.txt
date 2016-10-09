@@ -1,0 +1,2 @@
+Invalid syntax drive to DENIED instead of FAILED
+SET x and return non existant y
