@@ -1,0 +1,12 @@
+#! /usr/bin/tcsh
+
+foreach i (*.zip)
+  echo $i
+  set j = $i:r
+  echo $j
+  unzip $i
+  cd $j/build
+  make all
+  cd ../../
+  pwd
+end
