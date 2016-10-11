@@ -1,0 +1,3 @@
+Invalid command returns FAILED instead of DENIED
+trying to acceess a variable the principal has no aaccess for
+returns incorrect value

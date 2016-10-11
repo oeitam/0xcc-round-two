@@ -23,13 +23,12 @@ create principal charlie "charlie" // delegated alice permissions on x and y
 return y
 ***
 
-Printing prog:
 as principal alice password "alice" do
 append to y with { x="0", y="100" }
 return y
 ***
 
-as principal bob password "bobi" do
+as principal bob password "bob" do
 return x
 ***
 
