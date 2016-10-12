@@ -1,0 +1,3 @@
+
+Not providing the \" around the password of a principal need to return FAILED. 
+Instead - here it returns DENIED

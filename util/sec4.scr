@@ -1,0 +1,14 @@
+
+
+as principal admin password "admin" do
+set x = "my string"
+return x
+***
+
+as principal admin password admin do
+create principal alice "alice"
+create principal bob "bob"
+create principal charlie "charlie"
+return "done"
+***
+
