@@ -9,16 +9,19 @@ as principal admin password "admin" do
 create principal alice "alice"
 create principal bob "bob"
 create principal charlie "charlie"
-return "done"
+return "done1"
 ***
 
 as principal admin  password "admin" do
 set delegation x admin read-> charlie
-return "done"
+return "done2"
 ***
 
-as principal charlie password "charlie" do
-return x
+as principal admin password "admin" do
+return "done3"
 ***
+
+
+
 
 
