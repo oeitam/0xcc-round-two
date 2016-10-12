@@ -136,7 +136,7 @@ def Init():
     servers   = ""
     gverbose  = ""
     test_path = ""
-    filt_server = ""
+    filt_server = []
 
 
 
@@ -154,7 +154,7 @@ def Init():
     parser.add_argument('--servers', '-s',
                         help='points to the list of servers to run the test upon.')
     parser.add_argument('--filter_server', '-f',
-                        help='do not run for this server. only one allowed')
+                        help='do not run for this server. can take multiple of these', action='append')
 
     args = parser.parse_args()
     test = args.test
@@ -166,6 +166,7 @@ def Init():
     #print init_file
     #print type(init_file)
 
+    
     if init_file == None:
         fh = open('init.file','r')
     else:
@@ -318,10 +319,15 @@ def main():
             continue
         match = re.search(r'^#', s)
         if match:
-            continue      
-        if filt_server in s:
-            print "Filtered %s" % filt_server
-            continue      
+            continue
+        tmp = 0
+        for h in filt_server:
+            if h in s:
+                print "Filtered %s" % h
+                tmp = 1
+                continue
+        if tmp == 1:
+            continue
         print "================================================================"
         print s
         print "================================================================"

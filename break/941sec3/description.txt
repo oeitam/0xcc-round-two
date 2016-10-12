@@ -1,0 +1,5 @@
+the program creates principals and teh admin delegates read permission to 'prioncipal 'charlie'
+
+then the program tries to have charlie delegate read to principal 'bob'
+
+this sould be DENIED, since bob does not have delegation on the variable, but for this server, it succeeds: SET_DELEGATION, RETURNING
