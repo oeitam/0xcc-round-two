@@ -26,9 +26,6 @@ delete delegation x admin read-> charlie
 return "done3"
 ***
 
-as principal charlie password "charlie" do
-return x
-***
 
 
    

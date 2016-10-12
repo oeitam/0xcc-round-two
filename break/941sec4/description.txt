@@ -1,0 +1,2 @@
+after deletion of the read right for principal charlie on variable X, the oracle returns DENIED on the return x command.
+in this server (941) the server returns FAILED statusd, instead of DENIED

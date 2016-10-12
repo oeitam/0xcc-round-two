@@ -1,0 +1,3 @@
+after deletion of the read right for principal charlie, the last program should return DENIED.
+for this server (#911), it return the value of x, as if principal charlie has the read permission still.
+

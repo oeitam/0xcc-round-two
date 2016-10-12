@@ -21,8 +21,15 @@ as principal charlie password "charlie" do
 return x
 ***
 
-as principal charlie password "charlie" do
-set delegation x charlie read-> bob
+as principal admin password "admin" do
+delete delegation x admin read-> charlie
 return "done3"
 ***
 
+as principal charlie password "charlie" do
+return x
+***
+
+
+
+ 
