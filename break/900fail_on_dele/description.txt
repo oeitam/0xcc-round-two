@@ -1,0 +1,4 @@
+for the second program in this test, the server returns
+FAILED
+instead of
+SET_DELEGATION, RETURNING

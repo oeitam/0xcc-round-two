@@ -136,6 +136,7 @@ def Init():
     servers   = ""
     gverbose  = ""
     test_path = ""
+    filt_server = ""
 
 
 
@@ -152,6 +153,8 @@ def Init():
                         help='points to the init file that holds the definitions of locations for the program. default is init.file in the run directory')
     parser.add_argument('--servers', '-s',
                         help='points to the list of servers to run the test upon.')
+    parser.add_argument('--filter_server', '-f',
+                        help='do not run for this server. only one allowed')
 
     args = parser.parse_args()
     test = args.test
@@ -159,6 +162,7 @@ def Init():
     servers = args.servers
     gverbose = args.verbose
     test_path = args.test_path
+    filt_server = args.filter_server
     #print init_file
     #print type(init_file)
 
@@ -192,7 +196,7 @@ def Init():
     print "using as servers: %s" % servers
     print "using as gverbose: %s" %gverbose
     
-    return test,init_file,servers, test_path
+    return test,init_file,servers, test_path, filt_server
 
 #######################################################
 def run_test_on_server(progs, server):
@@ -260,7 +264,7 @@ def main():
     print "======================================================"
     print
     
-    test, init_file,servers, test_path = Init()
+    test, init_file,servers, test_path, filt_server = Init()
     
     #print test
     #print init_file
@@ -314,6 +318,9 @@ def main():
             continue
         match = re.search(r'^#', s)
         if match:
+            continue      
+        if filt_server in s:
+            print "Filtered %s" % filt_server
             continue      
         print "================================================================"
         print s

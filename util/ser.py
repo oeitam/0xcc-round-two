@@ -109,7 +109,7 @@ if test == 1 :
     for i in range(0,l):
         #print i
         # print "\"" + str(progs1[i]) + "\"" ,
-        print "         {\"program\":" + str(progs1[i]) +  "\", \"base64\": false}" ,
+        print "         {\"program\": \"" + str(progs1[i]) +  "\", \"base64\": false}" ,
         if ((l > 1) and (i < (l-1))) :
             print ","
 

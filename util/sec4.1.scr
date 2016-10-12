@@ -2,23 +2,13 @@
 
 as principal admin password "admin" do
 set x = "my string"
-return x
-***
-
-as principal admin password "admin" do
-create principal alice "alice"
-create principal bob "bob"
 create principal charlie "charlie"
-return "done1"
+return x
 ***
 
 as principal admin  password "admin" do
 set delegation x admin read-> charlie
 return "done2"
-***
-
-as principal admin password "admin" do
-return "done3"
 ***
 
 
