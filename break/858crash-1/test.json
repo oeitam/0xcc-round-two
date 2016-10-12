@@ -1,0 +1,11 @@
+{
+    "type": "crash",
+    "target_team": 858,
+    "arguments": {
+        "argv": ["%PORT%"],
+        "base64": false
+    },
+    "programs": [
+        {"program": "principal admin password \"B0BPWxxd\" do\nset x = \"another string\"\nreturn x\n***", "base64": false}
+    ]
+}
