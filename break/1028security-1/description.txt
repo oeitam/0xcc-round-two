@@ -1,0 +1,1 @@
+create user BON and set delegation to different user BOB works
