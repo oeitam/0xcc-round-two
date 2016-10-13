@@ -1,6 +1,6 @@
 {
-    "type": "crash",
-    "target_team": 872,
+    "type": "correctness",
+    "target_team": 998,
     "arguments": {
         "argv": ["%PORT%"],
         "base64": false
