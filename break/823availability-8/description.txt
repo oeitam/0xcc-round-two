@@ -1,2 +1,2 @@
 Invalid syntax drive to DENIED instead of FAILED
-principal .... without initial AS
+set  without variable name
