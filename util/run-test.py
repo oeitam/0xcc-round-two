@@ -20,7 +20,7 @@ gchild_stderr = open('gchild_stderr','w')
 def get_next_port():
     #increment the counter file with each call
     # write to file for debug
-    fh = open('/home/osboxes/MYSTUFF/Breaking/rundir/port','r+')
+    fh = open('/home/ubuntu/bibifi/rundir/port','r+')
     count_str = fh.read()
     count_int = int(count_str)
     count_int += 1
@@ -137,7 +137,7 @@ def Init():
     gverbose  = ""
     test_path = ""
     filt_server = []
-
+    only_server = []
 
 
     # handling arguments
@@ -154,8 +154,10 @@ def Init():
     parser.add_argument('--servers', '-s',
                         help='points to the list of servers to run the test upon.')
     parser.add_argument('--filter_server', '-f',
-                        help='do not run for this server. can take multiple of these', action='append')
-
+                        help='do not run for this server. can take multiple of these. conflicts with -o, but the program does not protect from this.', action='append')
+    parser.add_argument('--only_server', '-o',
+                        help='run only for this server. can take multiple of these. conflicts with -f, but no protection in the program itself.', action = 'append')
+    
     args = parser.parse_args()
     test = args.test
     init_file= args.init_file
@@ -163,6 +165,8 @@ def Init():
     gverbose = args.verbose
     test_path = args.test_path
     filt_server = args.filter_server
+    only_server = args.only_server
+
     #print init_file
     #print type(init_file)
 
@@ -197,7 +201,7 @@ def Init():
     print "using as servers: %s" % servers
     print "using as gverbose: %s" %gverbose
     
-    return test,init_file,servers, test_path, filt_server
+    return test,init_file,servers, test_path, filt_server, only_server
 
 #######################################################
 def run_test_on_server(progs, server):
@@ -265,7 +269,7 @@ def main():
     print "======================================================"
     print
     
-    test, init_file,servers, test_path, filt_server = Init()
+    test, init_file,servers, test_path, filt_server, only_server = Init()
     
     #print test
     #print init_file
@@ -312,6 +316,11 @@ def main():
 
     ## send to server in
 
+    if type(filt_server) != type([]):
+        filt_server = []
+    if type(only_server) != type([]):
+        only_server = []
+
     f = open(servers,'r')
     for s in f:
         match = re.search(r'^\s*$', s)
@@ -320,14 +329,23 @@ def main():
         match = re.search(r'^#', s)
         if match:
             continue
-        tmp = 0
+        tmp1 = 0
         for h in filt_server:
             if h in s:
                 print "Filtered %s" % h
-                tmp = 1
+                tmp1 = 1
                 continue
-        if tmp == 1:
+        if tmp1 == 1:
             continue
+
+        tmp2 = 0
+        if only_server != []:
+            for h in only_server:
+                if h in s:
+                    tmp2 = 1
+            if tmp2 == 0:
+                continue
+        
         print "================================================================"
         print s
         print "================================================================"
