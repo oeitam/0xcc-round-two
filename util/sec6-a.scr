@@ -1,0 +1,20 @@
+
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+create principal D "Dp"
+create principal E "Ep"
+set ADvar = "ADvar_v"
+set ADlist = []
+append to ADlist with "ADlist_item1"
+append to ADlist with "ADlist_item2"
+append to ADlist with "ADlist_item3"
+set ADrec = { f1 = "f1_v", f2 = "f2.v", f3 = "f3_v" }
+return "Created Principals ABCDE"
+***
+
+
+
+

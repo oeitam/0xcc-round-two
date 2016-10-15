@@ -76,8 +76,23 @@ def runServer(server, port):
     return (p, port)
 
 def stopServer( p):
-	p.terminate()
-	p.wait()
+    #print "one"
+    p.terminate()
+    cnt = 0
+    while cnt < 3:
+        stat = p.poll()
+        #print stat
+        if stat == None:
+            time.sleep(1)
+            cnt += 1
+            print "waited for %d second" % cnt
+        else:
+            cnt = 10
+    
+	#p.wait()
+    if p.poll == None : # still alive -> kill
+        p.kill()
+    
 	print( "server exited with return code: " + str(p.returncode))
 
 def serializeProgram(program):

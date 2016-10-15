@@ -18,6 +18,9 @@ def serializeProgram(program):
         if (ord(plist[i]) == 34): # -"-
             plist.insert(i,chr(92)) # "\"
 
+        #if (ord(plist[i]) == 47): # -\-
+        #    plist.insert(i,chr(92)) # "\"
+            
         #print "%2d: -%s-%d-" % (i,alist[i],ord(alist[i]))
 
     return ("".join(plist))
@@ -45,7 +48,7 @@ if len(sys.argv) < 2 :
     exit()
 
 filename = sys.argv[1]
-print "filename: %s" % filename
+#print "filename: %s" % filename
 
 oracle = 0
 test = 0
@@ -78,7 +81,7 @@ for line in f:
     match = re.search(r'^\s*$', line)
     if match:
         continue
-    print line.rstrip("\n")
+    #print line.rstrip("\n")
     build_prog = build_prog+line
     match = re.search(r'^\*\*\*', line)
     if match:
