@@ -11,7 +11,7 @@ set ADlist = []
 append to ADlist with "ADlist_item1"
 append to ADlist with "ADlist_item2"
 append to ADlist with "ADlist_item3"
-set ADrec = { f1 = "f1_v", f2 = "f2.v", f3 = "f3_v" }
+set ADrec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
 return "Created Principals ABCDE"
 ***
 
@@ -21,7 +21,7 @@ set Alist = []
 append to Alist with "Alist_item1"
 append to Alist with "Alist_item2"
 append to Alist with "Alist_item3"
-set Arec = { f1 = "f1_v", f2 = "f2.v", f3 = "f3_v" }
+set Arec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
 return "Prepared A"
 ***
 
@@ -31,9 +31,26 @@ set Blist = []
 append to Blist with "Blist_item1"
 append to Blist with "Blist_item2"
 append to Blist with "Blist_item3"
-set Brec = { f1 = "f1_v", f2 = "f2.v", f3 = "f3_v" }
+set Brec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
 return "Prepared B"
 ***
+as principal C password "Cp" do
+set Cvar = "Cvar_v"
+set Clist = []
+append to Clist with "Clist_item1"
+append to Clist with "Clist_item2"
+append to Clist with "Clist_item3"
+set Crec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+return "Prepared C"
+***
+
+as principal A password "Ap" do
+append to Blist with "A append to B"
+return Arec
+***
+
+
+
 
 
 

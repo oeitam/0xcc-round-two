@@ -116,7 +116,7 @@ def extract_team_num(server):
     return match.group(1)
 
 def compare_results():
-    print "====================================================="
+    print "================== COMPARE ==================================="
     for i in range(0,len(gresults)):
         #print i
         for j in range(0,len(gresults)):

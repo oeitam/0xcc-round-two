@@ -1,0 +1,3 @@
+appends to a principal B variable as principal A, with no autority. should be denied.
+
+
