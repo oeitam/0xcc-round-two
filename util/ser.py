@@ -33,9 +33,12 @@ def serializeProgram(program):
 #    3: type: security
 #             correctness
 #             crush
-#    4: target biold: 900
+#    4: target biuld: 900
 #                     840
 #                     ...
+# 2: target of serialization
+#    orig #to use with run-alt supplied by bibifi
+#
 
 if len(sys.argv) < 2 :
     print "bad input 1"
@@ -46,6 +49,7 @@ print "filename: %s" % filename
 
 oracle = 0
 test = 0
+orig = 0
 typ = ""
 target = 0
 
@@ -55,8 +59,10 @@ elif sys.argv[2] == "test":
     test = 1
     typ = sys.argv[3]
     target = sys.argv[4]
+elif sys.argv[2] == "orig":
+    orig = 1
 else:
-    print "baf input 2"
+    print "bad input 2"
     exit()
 
     
@@ -116,5 +122,20 @@ if test == 1 :
     print "    ]"
     print "}"
     exit()
+
+if orig == 1:
+    print "{\"arguments\": {\"argv\": [\"%PORT%\"]},"
+    print " \"programs\": ["
+    l = len(progs1)
+    for i in range(0,l):
+        print " {\"output\": [{\"status\": \"SOME OUTPUT\"}],"
+        print "  \"program\":"
+        print "  \"" + str(progs1[i]) + "\" }" ,
+        if ((l > 1) and (i < (l-1))) :
+            print ","
+    print "    ]"
+    print "}"
+    exit()
+            
 
 

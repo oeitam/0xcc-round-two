@@ -57,10 +57,14 @@ def read_test():
 def runServer(server, port):
     #print "--" + server + "--"
     #print type(server)
-    p = subprocess.Popen( [server,str(port)],
-                          stdout = gchild_stdout,
-                          stderr = gchild_stderr)
+    p = subprocess.Popen( [server,str(port)]
+    #                      )
+                           ,
+                           stdout = gchild_stdout,
+                           stderr = gchild_stderr)
     ##out,err = p.communicate())
+    #gchild_stdout, gchild_stderr = p.communicate()
+
     
     time.sleep(2)
     

@@ -1,0 +1,11 @@
+
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+create principal D "Dp"
+create principal E "Ep"
+return "Created Principals ABCDE"
+***
+
