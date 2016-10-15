@@ -12,3 +12,4 @@
          {"program": "as principal C password \"Cp\" do\nset Cvar = \"Cvar_v\"\nset Clist = []\nappend to Clist with \"Clist_item1\"\nappend to Clist with \"Clist_item2\"\nappend to Clist with \"Clist_item3\"\nset Crec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nreturn \"Prepared C\"\n***\n", "base64": false} ,
          {"program": "as principal A password \"Ap\" do\nappend to Blist with \"A append to B\"\nreturn Arec\n***\n", "base64": false}     ]
 }
+
