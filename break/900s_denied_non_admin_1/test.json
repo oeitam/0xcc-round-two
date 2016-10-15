@@ -10,3 +10,4 @@
          {"program": "as principal A password \"Ap\" do\nset Avar = \"Avar_v\"\nset Alist = []\nappend to Alist with \"Alist_item1\"\nappend to Alist with \"Alist_item2\"\nappend to Alist with \"Alist_item3\"\nset Arec = { f1 = \"f1_v\", f2 = \"f2.v\", f3 = \"f3_v\" }\nreturn \"Prepared A\"\n***\n", "base64": false} ,
          {"program": "as principal B password \"Bp\" do\nset Bvar = \"Bvar_v\"\nset Blist = []\nappend to Blist with \"Blist_item1\"\nappend to Blist with \"Blist_item2\"\nappend to Blist with \"Blist_item3\"\nset Brec = { f1 = \"f1_v\", f2 = \"f2.v\", f3 = \"f3_v\" }\nreturn \"Prepared B\"\n***\n", "base64": false}     ]
 }
+
