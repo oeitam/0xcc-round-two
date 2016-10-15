@@ -7,3 +7,4 @@ foreach i ( `ps -a | grep server | cut -c1-5` )
 end
 
 
+

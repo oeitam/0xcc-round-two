@@ -14,3 +14,4 @@ find . -name "*~*" -exec rm {} \;
 echo "check 1"
 find . -name "*~*"
 echo "check 2"
+
