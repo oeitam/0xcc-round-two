@@ -49,6 +49,32 @@ append to Blist with "A append to B"
 return Arec
 ***
 
+as principal A password "Ap" do
+append to Alist with "A append to A"
+set delegation Alist A append-> B
+return Alist
+***
+
+as principal B password "Bp" do
+append to Alist with "B appends to A"
+return Alist
+***
+
+as principal A password "Ap" do
+return Alist
+***
+
+as principal B password "Bp" do
+append to Alist with "B appends to A2"
+return "B appended to A"
+***
+
+as principal A password "Ap" do
+return Alist
+***
+
+
+
 
 
 

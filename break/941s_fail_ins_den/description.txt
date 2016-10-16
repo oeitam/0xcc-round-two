@@ -1,0 +1,4 @@
+in the 7th program in teh test, the target should return DENIED since
+principal B tries to return (read) a variable it has no delegation upon.
+instaed, it returns FAILED.
+
