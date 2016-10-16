@@ -1,0 +1,11 @@
+{
+    "type": "correctness",
+    "target_team": 999,
+    "arguments": {
+        "argv": ["%PORT%"],
+        "base64": false
+    },
+    "programs": [
+        {"program": "as principal admin password \"admin\" do\n           //comment on single line not beginning with double bar\nset x = \"x\"\nreturn x\n***\n", "base64": false}
+    ]
+}
