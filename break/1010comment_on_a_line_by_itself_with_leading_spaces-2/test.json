@@ -1,5 +1,5 @@
 {
-    "type": "correctness",
+    "type": "security",
     "target_team": 1010,
     "arguments": {
         "argv": ["%PORT%"],
