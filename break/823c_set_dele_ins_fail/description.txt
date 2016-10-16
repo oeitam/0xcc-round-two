@@ -1,0 +1,1 @@
+on setting delegation for a local variable, performes the set, instead of responding with FAILED

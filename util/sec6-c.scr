@@ -34,6 +34,7 @@ append to Blist with "Blist_item3"
 set Brec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
 return "Prepared B"
 ***
+
 as principal C password "Cp" do
 set Cvar = "Cvar_v"
 set Clist = []
@@ -46,11 +47,9 @@ return "Prepared C"
 
 as principal C password "Cp" do
 local Cloc = "C local var"
+set delegation Cloc C read-> B
 return Cloc
 ***
 
-as principal C password "Cp" do
-return Cloc
-***
 
 
