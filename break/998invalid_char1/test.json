@@ -1,0 +1,10 @@
+{
+    "type": "security",
+    "target_team": 998,
+    "arguments": {
+         "argv": ["%PORT%"],
+         "base64": false
+    },
+    "programs": [
+         {"program": "as principal bob password \"B0BPWxxd\" do\nset aaa@##@@@sss = \"another string\"\nreturn x\n***\n", "base64": false}     ]
+}
