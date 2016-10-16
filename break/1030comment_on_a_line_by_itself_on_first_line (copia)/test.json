@@ -1,6 +1,6 @@
 {
-    "type": "corretness",
-    "target_team": 1007,
+    "type": "correctness",
+    "target_team": 1030,
     "arguments": {
         "argv": ["%PORT%"],
         "base64": false
