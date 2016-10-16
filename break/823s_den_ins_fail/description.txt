@@ -1,0 +1,1 @@
+on the 6th program in this test, the target is asked to return a local variable that does not exist any more. instead or retruning FAILED like the oracle, it returns DENIED.
