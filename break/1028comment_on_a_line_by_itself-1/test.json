@@ -1,5 +1,5 @@
 {
-    "type": "crash",
+    "type": "correctness",
     "target_team": 1028,
     "arguments": {
         "argv": ["%PORT%"],
