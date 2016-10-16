@@ -1,0 +1,11 @@
+{
+    "type": "security",
+    "target_team": 833,
+    "arguments": {
+        "argv": ["%PORT%"],
+        "base64": false
+    },
+    "programs": [
+        {"program": "as principal admin password \"admin\" do\n//comment on single line \nset x = \"x\"\nreturn x\n***\n", "base64": false}
+    ]
+}
