@@ -1,0 +1,1 @@
+on the 5th program in the test, when there is a typo on the program (pasword instead of password) the target returns DENIED and the oracle returns FAILED
