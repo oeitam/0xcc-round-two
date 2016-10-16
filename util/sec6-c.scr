@@ -45,11 +45,33 @@ set Crec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
 return "Prepared C"
 ***
 
-as principal C password "Cp" do
-local Cloc = "C local var"
-set delegation Cloc C read-> B
-return Cloc
+as principal admin password "admin" do
+set delegation Avar admin read-> B
+set delegation Avar admin write-> C
+set delegation Bvar admin delegate-> A
+return "Delegated"
 ***
+
+as principal C password "Cp" do
+set Avar = "set by C"
+return "C done"
+***
+
+as principal B password "Bp" do
+return Avar
+***
+as principal A password "Ap" do
+set delegation Bvar A read-> C
+return "I am A"
+***
+
+as principal C password "Cp" do
+return Bvar
+***
+
+
+
+
 
 
 
