@@ -6,6 +6,6 @@
         "base64": false
     },
     "programs": [
-        {"program": "as principal admin password \"admin\" do\nset x = \"x\"\nreturn x\n***\n //comment after *** aaa@@@####§§§§", "base64": false}
+        {"program": "//comment on the first line\nas principal admin password \"admin\" do\nset x = \"x\"\nreturn x\n***\n", "base64": false}
     ]
 }
