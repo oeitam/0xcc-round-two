@@ -1,9 +1,0 @@
-the delete delegation command returns with a FAILED while the oracle returns with
-{
-        "status": "DELETE_DELEGATION"
-      },
-      {
-        "status": "RETURNING",
-        "output": "done3"
-      }
-

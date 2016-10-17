@@ -1,0 +1,1 @@
+after delegation of all for A to B, the server denies access to the delegated variables. The oracle allows.
