@@ -1,1 +1,0 @@
-the server does not print in the output the 'return' command. does not print out RETURNING etc.
