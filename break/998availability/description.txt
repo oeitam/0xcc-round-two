@@ -1,0 +1,1 @@
+set x = x did not FAILED but return an empty string
