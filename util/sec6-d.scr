@@ -50,7 +50,10 @@ default delegator = C
 return "tried default deg to set to C"
 ***
 
-
+as principal admin password "admin" do
+set stam = "stam"
+return stam
+***
 
 
 
