@@ -1,2 +1,2 @@
-Invalid syntax drive to CRASH
-Set with > instead of = and missing final DO in "as principal"
+Invalid char give not FAILED
+Set x to "aaa@@@####ss"
