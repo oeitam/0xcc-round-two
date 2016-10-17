@@ -1,2 +1,0 @@
-DID return FAILED but oracle NOT
-comment before all command
