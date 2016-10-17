@@ -1,0 +1,61 @@
+
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+set ADvar = "ADvar_v"
+set ADlist = []
+append to ADlist with "ADlist_item1"
+append to ADlist with "ADlist_item2"
+append to ADlist with "ADlist_item3"
+set ADrec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+return "Created Principals ABCDE"
+***
+
+as principal A password "Ap" do
+set Avar = "Avar_v"
+set Alist = []
+append to Alist with "Alist_item1"
+append to Alist with "Alist_item2"
+append to Alist with "Alist_item3"
+set Arec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+return "Prepared A"
+***
+
+as principal B password "Bp" do
+set Bvar = "Bvar_v"
+set Blist = []
+append to Blist with "Blist_item1"
+append to Blist with "Blist_item2"
+append to Blist with "Blist_item3"
+set Brec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+return "Prepared B"
+***
+
+as principal C password "Cp" do
+set Cvar = "Cvar_v"
+set Clist = []
+append to Clist with "Clist_item1"
+append to Clist with "Clist_item2"
+append to Clist with "Clist_item3"
+set Crec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+return "Prepared C"
+***
+
+as principal A password "Ap" do
+set delegation all A read-> B
+return "set delegation all A read to B"
+***
+
+as principal B password "Bp" do
+return Avar
+***
+
+as principal B password "Bp" do
+return Alist
+***
+
+as principal B password "Bp" do
+return Arec
+***
