@@ -1,1 +1,0 @@
-the last program tries to set Principal C as default delegator, performed by pincipal C. this should be denied, but the server just returns nothing
