@@ -1,2 +1,2 @@
 Invalid syntax drive to DENIED instead of FAILED
-As principal without password
+set x = x

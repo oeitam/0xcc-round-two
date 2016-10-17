@@ -1,2 +1,2 @@
 Invalid syntax drive to DENIED instead of FAILED
-return string without final
+return string without final duoble quote
