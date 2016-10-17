@@ -1,0 +1,1 @@
+after changing the default delegator, the append to Clist should work. the server does not do that, and instead issues a DENIED status
