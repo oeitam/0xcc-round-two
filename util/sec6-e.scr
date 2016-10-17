@@ -60,6 +60,34 @@ append to Clist with "item added by D"
 return Crec
 ***
 
+as principal D password "Dp" do
+set Dvar = "Dvar_v"
+set Dlist = []
+set delegation Dvar D read-> anyone
+set delegation Dvar D write-> anyone
+set delegation Dlist D read-> anyone
+set delegation Dlist D append-> anyone
+return "delegated Dvar to anyone"
+***
+
+as principal A password "Ap" do
+set Dvar = "Dvar set by A"
+return "A set Dvar"
+***
+
+as principal B password "Bp" do
+append to Dlist with Dvar
+return "B appended to Dlist"
+***
+
+as principal C password "Cp" do
+return Dlist
+***
+
+
+
+
+
 
 
 

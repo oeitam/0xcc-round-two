@@ -1,0 +1,20 @@
+{
+    "type": "security",
+    "target_team": 820,
+    "arguments": {
+         "argv": ["%PORT%"],
+         "base64": false
+    },
+    "programs": [
+         {"program": "as principal admin password \"admin\" do\ncreate principal A \"Ap\"\ncreate principal B \"Bp\"\ncreate principal C \"Cp\"\nset ADvar = \"ADvar_v\"\nset ADlist = []\nappend to ADlist with \"ADlist_item1\"\nappend to ADlist with \"ADlist_item2\"\nappend to ADlist with \"ADlist_item3\"\nset ADrec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nreturn \"Created Principals ABCDE\"\n***\n", "base64": false} ,
+         {"program": "as principal A password \"Ap\" do\nset Avar = \"Avar_v\"\nset Alist = []\nappend to Alist with \"Alist_item1\"\nappend to Alist with \"Alist_item2\"\nappend to Alist with \"Alist_item3\"\nset Arec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nreturn \"Prepared A\"\n***\n", "base64": false} ,
+         {"program": "as principal B password \"Bp\" do\nset Bvar = \"Bvar_v\"\nset Blist = []\nappend to Blist with \"Blist_item1\"\nappend to Blist with \"Blist_item2\"\nappend to Blist with \"Blist_item3\"\nset Brec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nreturn \"Prepared B\"\n***\n", "base64": false} ,
+         {"program": "as principal C password \"Cp\" do\nset Cvar = \"Cvar_v\"\nset Clist = []\nappend to Clist with \"Clist_item1\"\nappend to Clist with \"Clist_item2\"\nappend to Clist with \"Clist_item3\"\nset Crec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nreturn \"Prepared C\"\n***\n", "base64": false} ,
+         {"program": "as principal admin password \"admin\" do\ndefault delegator = C\nreturn \"default dele set to C\"\n***\n", "base64": false} ,
+         {"program": "as principal admin password \"admin\" do\ncreate principal D \"Dp\"\nreturn \"Created prin D\"\n***\n", "base64": false} ,
+         {"program": "as principal D password \"Dp\" do\nappend to Clist with \"item added by D\"\nreturn Crec\n***\n", "base64": false} ,
+         {"program": "as principal D password \"Dp\" do\nset Dvar = \"Dvar_v\"\nset Dlist = []\nset delegation Dvar D read-> anyone\nset delegation Dvar D write-> anyone\nset delegation Dlist D read-> anyone\nset delegation Dlist D append-> anyone\nreturn \"delegated Dvar to anyone\"\n***\n", "base64": false} ,
+         {"program": "as principal A password \"Ap\" do\nset Dvar = \"Dvar set by A\"\nreturn \"A set Dvar\"\n***\n", "base64": false} ,
+         {"program": "as principal B password \"Bp\" do\nappend to Dlist with Dvar\nreturn \"B appended to Dlist\"\n***\n", "base64": false} ,
+         {"program": "as principal C password \"Cp\" do\nreturn Dlist\n***\n", "base64": false}     ]
+}
