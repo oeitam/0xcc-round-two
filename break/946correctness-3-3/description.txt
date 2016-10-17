@@ -1,2 +1,0 @@
-Invalid syntax drive to DENIED instead of FAIL
-set to complex string

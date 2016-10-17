@@ -1,0 +1,2 @@
+the last program in the test tries to return a variable the principal has
+no access to. instead of DENIED, the server returns the value of the variable.
