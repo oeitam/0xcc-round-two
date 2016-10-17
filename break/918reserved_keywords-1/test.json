@@ -1,5 +1,5 @@
 {
-    "type": "security",
+    "type": "availability",
     "target_team": 918,
     "arguments": {
          "argv": ["%PORT%"],
