@@ -1,0 +1,1 @@
+the program gave read rights to principal C, and then deleted the delegation. The server should have responded with denied. Instead, it performs the operation and returns the variable (it should have no access to)
