@@ -1,0 +1,12 @@
+{
+    "type": "security",
+    "target_team": 918,
+    "arguments": {
+         "argv": ["%PORT%"],
+         "base64": false
+    },
+    "programs": [
+         {"program": "as principal admin password \"admin\" do\ncreate principal A \"Ap\"\ncreate principal B \"Bp\"\ncreate principal C \"Cp\"\nset ADvar = \"ADvar_v\"\nset ADlist = []\nappend to ADlist with \"ADlist_item1\"\nappend to ADlist with \"ADlist_item2\"\nappend to ADlist with \"ADlist_item3\"\nset ADrec = { f1 = \"f1_v\", f2 = \"f2_v\", f3 = \"f3_v\" }\nset delegation ADlist admin delegate -> A\nset delegation ADlist admin append -> A\nreturn \"Created Principals ABC\"\n***\n", "base64": false} ,
+         {"program": "as principal A password \"Ap\" do\nforeach item in ADlist replace with \"replaced\"\nreturn \"Replaced\"\n***\n", "base64": false} ,
+         {"program": "as principal A password \"Ap\" do\nlocal rec1 = { key = \"1\", val = \"A\"}\nlocal rec2 = { key = \"2\", val = \"B\"}\nlocal rec3 = { key = \"3\", val = \"C\"}\nlocal rec4 = { key = \"4\", val = \"D\"}\nlocal rec5 = { key = \"5\", val = \"E\"}\nlocal rec6 = { key = \"6\", val = \"F\"}\nlocal rec7 = { key = \"7\", val = \"G\"}\nlocal rec8 = { key = \"8\", val = \"H\"}\nreturn rec8\n***\n", "base64": false}     ]
+}
