@@ -1,0 +1,1 @@
+the last program has an exit command by a non administrator principal. the server should have responded with DENIED and not exit. this server, responds FAILED.

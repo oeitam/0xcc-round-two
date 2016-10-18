@@ -1,0 +1,1 @@
+the test includes a change p[assword command. this server responds with FAILED instead of performaing teh command

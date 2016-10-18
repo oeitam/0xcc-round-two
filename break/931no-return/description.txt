@@ -1,2 +1,0 @@
-program with no return responds with 'SET' instead of 'FAILED'
-
