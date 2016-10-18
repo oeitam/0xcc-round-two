@@ -1,0 +1,142 @@
+
+Notes:
+
+1. I am using tcsh, and not bash
+
+directory structure :
+=====================
+/home/ubuntu/bibifi
+  repo
+    moved tests [this is where I move tests that are no longer needed or were rejected]
+    12
+      0xcc-round-two
+        break
+        util
+        bios
+        doc
+        README.md
+  builds
+  rundir [here I run my tests by using run-test.py]
+    port [this is a file that holds the next port number. automatically incremented with each run]
+    init.file [this is a file with a couple of parameters for my run-test.py script
+  tests [this is the bibifi test bundle]
+    grader
+    test1.json
+    run.py
+    run-alt.py
+    .....
+  builds [under this directory I have all the servers]
+    1007
+      build
+        server
+      ...
+    1009
+    1010
+    ......  
+
+setup
+=====
+
+1. in the rundir directory, do:
+> echo "1025" >! port
+this will create the port file and start workign with port 1025
+
+2. wher you run your tests (the terminal where you run the tests) need to have the util directory in 
+   the PATH variable:
+   
+   > setenv PATH = ${PATH}:/home/ubuntu/bibifi/repo/12/0xcc-round-two/util
+
+
+content of util directory:
+==========================
+run-test.py [this is the script that is used to run the tests]
+*.scr [test files]
+clean.cshrc [script to remove files with "~" and "#" in the file name. back up files of editors usually]
+prep*.cshrc [scripts to create test tirectories with description.txt and test.json]
+kill*.cshrc [scripts to kill processes that did not 'die' correctly, like - servers, python, java, perl left-overs]
+ser.py [this script takes a program (.scr file) and outputs a test for the oracle or a test to be used for submission 
+        or a test to be used with run.py and run-alt.py (not supplying correct expected outputs)
+servers* [list of servers used by run-test.py. Best is to have the list of ALL the servers.]
+codes [Disregard]
+test-template [Disregard]
+build-nd-test-all [Disregard]
+
+run-test.py options
+===================
+~/bibifi/rundir > run-test.py -h
+Starting ...
+======================================================
+
+usage: run-test.py [-h] [--test TEST] [--test_path TEST_PATH] [--verbose]
+                   [--init_file INIT_FILE] [--servers SERVERS]
+                   [--filter_server FILTER_SERVER] [--only_server ONLY_SERVER]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --test TEST, -t TEST  the name of the test that is being run
+  --test_path TEST_PATH, -p TEST_PATH
+                        path to where the tests are stored
+  --verbose, -v         spits out also the communication with teh server
+  --init_file INIT_FILE, -i INIT_FILE
+                        points to the init file that holds the definitions of
+                        locations for the program. default is init.file in the
+                        run directory
+  --servers SERVERS, -s SERVERS
+                        points to the list of servers to run the test upon.
+  --filter_server FILTER_SERVER, -f FILTER_SERVER
+                        do not run for this server. can take multiple of
+                        these. conflicts with -o, but the program does not
+                        protect from this.
+  --only_server ONLY_SERVER, -o ONLY_SERVER
+                        run only for this server. can take multiple of these.
+                        conflicts with -f, but no protection in the program
+                        itself.
+
+command line example:
+> kill-a.cshrc ; run-test.py -t sec6-g -f 900 -f 860 -f 837 -f 911 -f 941 -f 840 -f 1009 | & tee run.log
+
+what does it do:
+ - kill all the leftover processes to clean it all
+ - run the test sec6-g.scr
+ - avoids running the servers (filters them out) 900 860 837 911 941 840 1009
+ - pipes all output and stderr to the file run.log and to the screen
+
+
+ser.py options
+==============
+# parameters
+
+# 1: file name to serialize
+# 2: target of serialization
+#    oracle
+#    test
+#    3: type: security
+#             correctness
+#             crush
+#    4: target biuld: 900
+#                     840
+#                     ...
+# 2: target of serialization
+#    orig #to use with run-alt supplied by bibifi
+#
+
+run examples:
+[outputs a test for break submission. the program is in bug1.scr file. the type of output is for "test". the
+ type of break is 'correctness' and the target attacked team is 1009
+./ser.py bug1.scr test correctness 1009
+         
+[ output a test based on the program in the file sec6.scr. the output format can be used for the original
+ run.py and run-alt.py (supplied by bibifi) ]
+./ser.py sec6.scr orig
+
+
+[ output a rest based on the program in sec6.scr. the output i formatted to be copy-pasted into the 
+oracle test submision on bibifi site
+./ser.py sec6.scr oracle
+
+
+-----------------------------------------------------------------
+
+
+
+

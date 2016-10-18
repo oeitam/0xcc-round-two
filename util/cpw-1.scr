@@ -1,0 +1,31 @@
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+set ADvar = "ADvar_v"
+return "Created Principals ABCDE"
+***
+
+as principal admin password "admin" do
+change password admin "ADp"
+return ADvar
+***
+
+as principal admin password "ADp" do
+return ADvar
+***
+
+as principal A password "Ap" do
+change password A "Ap2"
+return "replaced"
+***
+
+as principal A password "Ap" do
+retrun "Returning as A"
+***
+
+as principal B password "Bp" do
+exit
+***
+
