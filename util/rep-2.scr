@@ -1,0 +1,60 @@
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+set ADvar = "ADvar_v"
+set ADlist = []
+append to ADlist with "ADlist_item1"
+append to ADlist with "ADlist_item2"
+append to ADlist with "ADlist_item3"
+set ADrec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+set delegation ADlist admin delegate -> A
+set delegation ADlist admin append -> A
+set delegation ADlist admin read -> A
+set delegation ADlist admin write -> A
+return "Created Principals ABC"
+***
+
+as principal A password "Ap" do
+local rec1 = { key = "1", val = "A"}
+local rec2 = { key = "2", val = "B"}
+local rec3 = { key = "3", val = "C"}
+local rec4 = { key = "4", val = "D"}
+local rec5 = { key = "5", val = "E"}
+local rec6 = { key = "6", val = "F"}
+local rec7 = { key = "7", val = "G"}
+local rec8 = { key = "8", val = "H"}
+append to ADlist with rec1
+append to ADlist with rec2
+append to ADlist with rec3
+append to ADlist with rec4
+append to ADlist with rec5
+append to ADlist with rec6
+append to ADlist with rec7
+append to ADlist with rec8
+return ADlist
+***
+
+as principal A password "Ap" do
+set mylist = []
+local rec1 = { key = "1", val = "A"}
+local rec2 = { key = "2", val = "B"}
+local rec3 = { key = "3", val = "C"}
+local rec4 = { key = "4", val = "D"}
+local rec5 = { key = "5", val = "E"}
+local rec6 = { key = "6", val = "F"}
+local rec7 = { key = "7", val = "G"}
+local rec8 = { key = "8", val = "H"}
+append to mylist with rec1
+append to mylist with rec2
+append to mylist with rec3
+append to mylist with rec4
+append to mylist with rec5
+append to mylist with rec6
+append to mylist with rec7
+append to mylist with rec8
+foreach k in mylist replacewith { key2 = k.val, val2 = k.key }
+return mylist
+***
+
