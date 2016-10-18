@@ -1,0 +1,34 @@
+
+as principal admin password "admin" do
+create principal A "Ap"
+create principal B "Bp"
+create principal C "Cp"
+set ADvar = "ADvar_v"
+set ADlist = []
+append to ADlist with "ADlist_item1"
+append to ADlist with "ADlist_item2"
+append to ADlist with "ADlist_item3"
+set ADrec = { f1 = "f1_v", f2 = "f2_v", f3 = "f3_v" }
+set delegation ADlist admin delegate -> A
+set delegation ADlist admin append -> A
+return "Created Principals ABC"
+***
+
+as principal A password "Ap" do
+foreach item in ADlist replace with "replaced"
+return "Replaced"
+***
+
+as principal A password "Ap" do
+local rec1 = { key = "1", val = "A"}
+local rec2 = { key = "2", val = "B"}
+local rec3 = { key = "3", val = "C"}
+local rec4 = { key = "4", val = "D"}
+local rec5 = { key = "5", val = "E"}
+local rec6 = { key = "6", val = "F"}
+local rec7 = { key = "7", val = "G"}
+local rec8 = { key = "8", val = "H"}
+return rec8
+***
+
+
