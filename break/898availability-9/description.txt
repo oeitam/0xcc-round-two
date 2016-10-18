@@ -1,0 +1,2 @@
+Result is denied instead of failed
+as principal with wrong pwd and set x = x
